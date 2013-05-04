@@ -3,30 +3,49 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	float y_speed;
-	float x_speed;
+    public float speed = 6.0F;
+    public float jumpSpeed = 8.0F;
+    public float gravity = 20.0F;
+    private Vector3 moveDirection = Vector3.zero;
 	
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		y_speed -= 1;
 		MoveMe ();
 	}
 	
 	void MoveMe () {
-		float horiz_movement = Input.GetAxis("Horizontal") * 4 * Time.deltaTime;
-		float vert_movement = Input.GetAxis("Vertical") * 4 * Time.deltaTime;
-		Debug.Log(Time.deltaTime);
-		float vert_movement = y_speed * Time.deltaTime;
-		transform.Translate (new Vector3(horiz_movement,vert_movement,0));
+		CharacterController controller = GetComponent<CharacterController>();
+		if (controller.isGrounded) {
+            // We are grounded, so recalculate
+            // move direction directly from axes
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0,
+                                    Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            
+            if (Input.GetButton ("Jump")) {
+                moveDirection.y = jumpSpeed;
+            }
+        }
+        // Apply gravity
+        moveDirection.y -= gravity * Time.deltaTime;
+        
+        // Move the controller
+        controller.Move(moveDirection * Time.deltaTime);
 	}
 	
-	void OnTriggerEnter(Collider other){
-		Debug.Log("PLAYER");
-		y_speed = 0;
+	/*void OnTriggerEnter(Collider other){
+		Debug.Log("PLAYER | Enter");
+		collided = true;
 	}
+	void OnTriggerExit(Collider other){
+		Debug.Log("PLAYER | Exit");
+		collided = false;
+	}*/
+
 }
