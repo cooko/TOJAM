@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Floor.cs" />
      <Compile Include="Assets\Code\Player.cs" />
+     <Compile Include="Assets\Code\PlayerAnimController.cs" />
      <Compile Include="Assets\Code\Test.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
