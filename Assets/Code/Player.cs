@@ -83,4 +83,15 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+	
+	void OnTriggerEnter(Collider other) {
+		if(other.tag == "Pickup_Rocket"){
+			Minigun.SetActive(false);
+			Railgun.SetActive(false);
+			RocketLauncher.SetActive(true);
+			RocketLauncher.renderer.enabled = true;
+        	Destroy(other.gameObject);
+		}
+    }
+	
 }
