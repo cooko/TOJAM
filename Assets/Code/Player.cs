@@ -3,22 +3,49 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 	protected CharacterController control;
-	protected Vector3 force_Gravity = Vector3.zero;
-	protected Vector3 force_Player = Vector3.zero;
-	protected Vector3 force_Weapon = Vector3.zero;
+	protected Vector3 move = Vector3.zero;
+	
+	public float moveSpeed;
+	public float jumpSpeed;
+	protected bool jump;
+	
+	protected Vector3 gravity = Vector3.zero;
 
+
+	// Use this for initialization
 	void Start () {
 		control = GetComponent<CharacterController>();
+		moveSpeed = 3;
+		jumpSpeed = 3;
+		if (!control)
+		{
+			Debug.LogError("Unit.Start() " + name + " has no CharacterController!");
+			enabled = false;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	}
-	
-	Vector3 CalculateForces (){
-		//Horizontal Player Movement
-		force_Player = new Vector3(Input.GetAxis ("Horizontal"), 0f, 0f);
-		//Assign Gravity to
-		return force_Player;
+		
+		move = new Vector3(Input.GetAxis ("Horizontal"), 0f, 0f);
+		
+		if (!control.isGrounded)
+		{
+			gravity += Physics.gravity * Time.deltaTime;	
+		}
+		else
+		{
+			gravity = Vector3.zero;	
+			
+			if (Input.GetButton("Jump"))
+			{
+				gravity.y = jumpSpeed;
+				jump = false;
+			}
+		}
+		
+		move += gravity;
+		
+		control.Move (move * Time.deltaTime);	
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAnimController : MonoBehaviour {
 	
-	private bool walking = false;
+	
 	private int facing;
 	private tk2dAnimatedSprite anim;
 	
