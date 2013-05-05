@@ -30,9 +30,10 @@ public class Player : MonoBehaviour {
 		moveSpeed = 3;
 		jumpSpeed = 3;
 		friction = 15;
-		Minigun = GameObject.Find("Minigun");
-		Railgun = GameObject.Find("Railgun");
-		RocketLauncher = GameObject.Find("RocketLauncher");
+		Minigun = transform.Find ("Minigun").gameObject;
+		Railgun = transform.Find ("Railgun").gameObject;
+		RocketLauncher = transform.Find ("RocketLauncher").gameObject;
+
 		Equipped = Minigun.GetComponent<Weapon>();
 		Gun = Minigun;
 		Railgun.SetActive(false);
