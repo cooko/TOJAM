@@ -9,13 +9,13 @@ public class Bullet : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("StartMe");
+		//Debug.Log ("StartMe");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float movex = Mathf.Cos(transform.rotation.z) * speed * Time.deltaTime;
-		float movey = Mathf.Sin (transform.rotation.z) * speed * Time.deltaTime;
-		transform.Translate(movex, movey, 0);
+		float movex = Mathf.Cos(transform.eulerAngles.z * Mathf.Deg2Rad) * speed * Time.deltaTime;
+		float movey = Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad) * speed * Time.deltaTime;
+		transform.Translate(new Vector3(movex, movey, 0), Space.World);
 	}
 }

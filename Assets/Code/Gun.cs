@@ -24,8 +24,8 @@ public class Gun : MonoBehaviour {
 		transform.rotation = initrotation;
 		transform.localPosition = initlocalpos;
 		
-		transform.RotateAround(parentposition, Vector3.forward, angle);
-		
+		transform.Rotate(0, 0, angle);
+		Debug.Log(Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad));
 		if (Input.GetButton("Fire1")){
 			Instantiate (bullet, transform.position, transform.rotation);
 		}
