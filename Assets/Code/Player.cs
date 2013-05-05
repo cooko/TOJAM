@@ -24,8 +24,8 @@ public class Player : MonoBehaviour {
 		Railgun = GameObject.Find("Railgun");
 		RocketLauncher = GameObject.Find("RocketLauncher");
 		
-		Railgun.SetActiveRecursively(false);
-		RocketLauncher.SetActiveRecursively(false);
+		Railgun.SetActive(false);
+		RocketLauncher.SetActive(false);
 
 		
 		if (!control)
@@ -69,16 +69,16 @@ public class Player : MonoBehaviour {
 	void SwitchWeapon() {
 		if(Input.GetKeyDown("space")){
 			if(Minigun.active){
-				Minigun.SetActiveRecursively(false);
-				RocketLauncher.SetActiveRecursively(true);
+				Minigun.SetActive(false);
+				RocketLauncher.SetActive(true);
 				RocketLauncher.renderer.enabled = true;
 			}else if(RocketLauncher.active){
-				RocketLauncher.SetActiveRecursively(false);
-				Railgun.SetActiveRecursively(true);
+				RocketLauncher.SetActive(false);
+				Railgun.SetActive(true);
 				Railgun.renderer.enabled = true;
 			}else if(Railgun.active){
-				Railgun.SetActiveRecursively(false);
-				Minigun.SetActiveRecursively(true);
+				Railgun.SetActive(false);
+				Minigun.SetActive(true);
 				Minigun.renderer.enabled = true;
 			}
 		}

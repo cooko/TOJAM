@@ -46,6 +46,12 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Bullet.cs" />
      <Compile Include="Assets\Code\Floor.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\Ammo Scripts\MinigunAmmo.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\Ammo Scripts\RailgunAmmo.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\Ammo Scripts\RocketAmmo.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\Minigun.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\Railgun.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\RocketLauncher.cs" />
      <Compile Include="Assets\Code\Gun.cs" />
      <Compile Include="Assets\Code\GunAnimController.cs" />
      <Compile Include="Assets\Code\Player.cs" />
