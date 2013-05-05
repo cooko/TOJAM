@@ -22,11 +22,9 @@ public class RocketAmmo : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider collider) {
-		Debug.Log ("HIT");
 		if (collider.gameObject.tag == "Level") {
 			Instantiate (explosion, transform.position, transform.rotation);
 			Destroy(gameObject);
-			Debug.Log ("HIT LEVEL");
 		}
 	}
 }

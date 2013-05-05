@@ -21,10 +21,8 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider collider) {
-		Debug.Log ("HIT");
 		if (collider.gameObject.tag == "Level") {
 			Destroy(gameObject);
-			Debug.Log ("HIT LEVEL");
 		}
 	}
 }

@@ -161,6 +161,17 @@ public class Player : MonoBehaviour {
 			Gun = Railgun;
         	//Destroy(other.gameObject);
 		}
+		
+		if (other.tag == "Explosion"){
+			float xdist = transform.position.x - other.transform.position.x;
+			float ydist = transform.position.y - other.transform.position.y;
+			momentum.x += (75 - (xdist * 3)) * Mathf.Sign (xdist);
+			momentum.y += (75 - (ydist * 3)) * Mathf.Sign (ydist);
+		}
+		else if (other.tag == "Minigun_Bullet"){
+		}
+		else if (other.tag == "Rocket_Bullet"){
+		}
     }
 	void Fire(){
 		if (Input.GetButton(player + " - Shoot")){
