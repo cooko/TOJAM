@@ -23,7 +23,11 @@ public class Player : MonoBehaviour {
 		Minigun = GameObject.Find("Minigun");
 		Railgun = GameObject.Find("Railgun");
 		RocketLauncher = GameObject.Find("RocketLauncher");
+		
+		Railgun.SetActiveRecursively(false);
+		RocketLauncher.SetActiveRecursively(false);
 
+		
 		if (!control)
 		{
 			Debug.LogError("Unit.Start() " + name + " has no CharacterController!");
@@ -34,6 +38,8 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Move();
+		SwitchWeapon();
+
 	}
 	
 	void Move(){
@@ -61,5 +67,20 @@ public class Player : MonoBehaviour {
 	void Shoot(){
 	}
 	void SwitchWeapon() {
+		if(Input.GetKeyDown("space")){
+			if(Minigun.active){
+				Minigun.SetActiveRecursively(false);
+				RocketLauncher.SetActiveRecursively(true);
+				RocketLauncher.renderer.enabled = true;
+			}else if(RocketLauncher.active){
+				RocketLauncher.SetActiveRecursively(false);
+				Railgun.SetActiveRecursively(true);
+				Railgun.renderer.enabled = true;
+			}else if(Railgun.active){
+				Railgun.SetActiveRecursively(false);
+				Minigun.SetActiveRecursively(true);
+				Minigun.renderer.enabled = true;
+			}
+		}
 	}
 }
