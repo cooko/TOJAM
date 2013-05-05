@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	
 	public float moveSpeed;
 	public float jumpSpeed;
-	protected bool jump;
+	public bool jump;
 	
 	protected Vector3 gravity = Vector3.zero;
 

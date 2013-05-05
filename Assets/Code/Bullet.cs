@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		//bullet = GetComponent<GameObject>();
+		transform.Translate(new Vector3(0.125f, 0.017f, 0));
 	}
 	
 	// Update is called once per frame
