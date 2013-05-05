@@ -11,12 +11,19 @@ public class Player : MonoBehaviour {
 	
 	protected Vector3 gravity = Vector3.zero;
 
-
+	GameObject Minigun;
+	GameObject Railgun;
+	GameObject RocketLauncher;
+	
 	// Use this for initialization
 	void Start () {
 		control = GetComponent<CharacterController>();
 		moveSpeed = 3;
 		jumpSpeed = 3;
+		Minigun = GameObject.Find("Minigun");
+		Railgun = GameObject.Find("Railgun");
+		RocketLauncher = GameObject.Find("RocketLauncher");
+
 		if (!control)
 		{
 			Debug.LogError("Unit.Start() " + name + " has no CharacterController!");
@@ -26,7 +33,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Move();
+	}
+	
+	void Move(){
 		move = new Vector3(Input.GetAxis ("Horizontal"), 0f, 0f);
 		
 		if (!control.isGrounded)
@@ -46,6 +56,10 @@ public class Player : MonoBehaviour {
 		
 		move += gravity;
 		
-		control.Move (move * Time.deltaTime);	
+		control.Move (move * Time.deltaTime);
+	}
+	void Shoot(){
+	}
+	void SwitchWeapon() {
 	}
 }
