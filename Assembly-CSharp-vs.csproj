@@ -52,8 +52,9 @@
      <Compile Include="Assets\Code\Gun Scripts\Minigun.cs" />
      <Compile Include="Assets\Code\Gun Scripts\Railgun.cs" />
      <Compile Include="Assets\Code\Gun Scripts\RocketLauncher.cs" />
-     <Compile Include="Assets\Code\Gun.cs" />
+     <Compile Include="Assets\Code\Gun Scripts\Weapon.cs" />
      <Compile Include="Assets\Code\GunAnimController.cs" />
+     <Compile Include="Assets\Code\GunOLD.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\PlayerAnimController.cs" />
      <Compile Include="Assets\Code\PlayerAnimControllerBody.cs" />
