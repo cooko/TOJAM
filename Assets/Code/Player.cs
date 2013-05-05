@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 	public float jumpSpeed;
 	public bool jump;
 	
+	public string player;
+	
 	float friction;
 	Vector3 momentum = Vector3.zero;
 	
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour {
 	
 	void Move(){
 		move = Vector3.zero;
-		walk = new Vector3(Input.GetAxis ("Horizontal"), 0, 0);
+		walk = new Vector3(Input.GetAxis (player + " - HorizontalMove"), 0, 0);
 		if(!control.isGrounded){
 			gravity.y += -10 * Time.deltaTime;
 		}else{
@@ -76,7 +78,7 @@ public class Player : MonoBehaviour {
 					momentum.x += friction;
 				}
 			}
-			if (Input.GetButton("Jump"))
+			if (Input.GetButton(player + " - Jump"))
 			{
 				gravity.y = jumpSpeed;
 			}
@@ -160,7 +162,8 @@ public class Player : MonoBehaviour {
 		}
     }
 	void Fire(){
-		if (Input.GetButton("Fire1")){
+		if (Input.GetButton(player + " - Shoot")){
+			print ("sdfasdfasdfasdfas");
 			if (Equipped.Fire()){
 				Debug.Log (Gun.transform.eulerAngles);
 				momentum.x -= Mathf.Cos (Gun.transform.eulerAngles.z * Mathf.Deg2Rad) * Equipped.knockback;

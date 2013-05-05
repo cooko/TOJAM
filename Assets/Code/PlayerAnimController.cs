@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAnimController : MonoBehaviour {
 	
-	
+	public string player;
 	private int facing;
 	private tk2dAnimatedSprite anim;
 	
@@ -15,7 +15,7 @@ public class PlayerAnimController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis ("Horizontal") > 0) {
+		if (Input.GetAxis (player + " - HorizontalMove") > 0) {
 			if (facing == 0){
 				anim.FlipX();
 				facing = 1;
@@ -23,7 +23,7 @@ public class PlayerAnimController : MonoBehaviour {
 			if(!anim.IsPlaying("Run"))
 				anim.Play("Run");
 		}
-		else if (Input.GetAxis ("Horizontal") < 0) {
+		else if (Input.GetAxis (player + " - HorizontalMove") < 0) {
 			if (facing == 1){
 				anim.FlipX ();
 				facing = 0;
@@ -31,7 +31,7 @@ public class PlayerAnimController : MonoBehaviour {
 			if(!anim.IsPlaying("Run"))
 				anim.Play("Run");
 		}
-		else if (Input.GetAxis ("Horizontal") == 0 && !anim.IsPlaying ("Idle")){
+		else if (Input.GetAxis (player + " - HorizontalMove") == 0 && !anim.IsPlaying ("Idle")){
 			anim.Play ("Idle");
 		}
 		
